@@ -5,9 +5,6 @@ import TodosList from './components/todos-list.component';
 import CreateTodo from './components/create-todo.component';
 import EditTodo from './components/edit-todo.component';
 
-
-import logo from './logo.svg';
-
 class App extends Component {
   render() {
     return (
@@ -15,10 +12,7 @@ class App extends Component {
         <div className="container">
           
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="">
-              <img src = {logo} width="30" height="30" alt="logo" />
-            </a>
-            <Link to="/" className="navbar-brand">MERN-Stack Todo App</Link> 
+            <Link to="/" className="navbar-brand">MERN-Stack Todo App Excercise for LUXOFT</Link> 
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -34,7 +28,7 @@ class App extends Component {
             </div>
 
           </nav>
-
+          <hr/>
           <Route path='/' exact component={TodosList} />
           <Route path='/edit/:id' component={EditTodo} /> 
           <Route path='/create' component={CreateTodo} /> 

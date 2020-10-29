@@ -7,19 +7,19 @@ export default class CreateTodo extends Component {
         super(props);
 
         this.state = {
-            todo_description: '',
-            todo_responsible: '',
+            todo_title: '',
+            todo_name: '',
             todo_priority: '',
             todo_completed: false
         }
     }
 
     onChangeTodoDescription = e => {
-        this.setState({ todo_description: e.target.value });
+        this.setState({ todo_title: e.target.value });
     }
 
     onChangeTodoResponsible = e => {
-        this.setState({ todo_responsible: e.target.value });
+        this.setState({ todo_name: e.target.value });
     }
 
     onChangeTodoPriority = e => {
@@ -31,14 +31,14 @@ export default class CreateTodo extends Component {
 
         // SUBMIT LOGIC NEED TO BE IMPLEMENTED HERE
         console.log('Form submitteed:');
-        console.log(`Todo Description: ${this.state.todo_description}`);
-        console.log(`Todo Responsible: ${this.state.todo_responsible}`);
+        console.log(`Todo Title: ${this.state.todo_title}`);
+        console.log(`Todo Name: ${this.state.todo_name}`);
         console.log(`Todo Priority: ${this.state.todo_priority}`);
         console.log(`Todo Completed: ${this.state.todo_completed}`);
 
         const newTodo = {
-            todo_description: this.state.todo_description,
-            todo_responsible: this.state.todo_responsible,
+            todo_description: this.state.todo_title,
+            todo_responsible: this.state.todo_name,
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         }
@@ -47,8 +47,8 @@ export default class CreateTodo extends Component {
             .then( res => console.log(res.data));
         
         this.setState({
-            todo_description: '',
-            todo_responsible: '',
+            todo_title: '',
+            todo_name: '',
             todo_priority: '',
             todo_completed: false
         })
@@ -60,23 +60,26 @@ export default class CreateTodo extends Component {
                 <h3>Create New Todo</h3>
                 <form onSubmit = {this.onSubmit}>
                     <div className="form-group">
-                        <label>Description: </label>
+                        <label>Title: </label>
                         <input type="text"
                                 className="form-control"
-                                value={this.state.todo_description}
+                                value={this.state.todo_title}
                                 onChange={this.onChangeTodoDescription}
                                 />
 
                     </div>
                     <div className="form-group">
-                        <label>Responsible: </label>
+                        <label>Name: </label>
                         <input type="text"
                                 className="form-control"
-                                value={this.state.todo_responsible}
+                                value={this.state.todo_name}
                                 onChange={this.onChangeTodoResponsible}
                                 />
                                 
                     </div>
+                    <hr/>
+                    <h3>PRIORITY:</h3>
+                    <hr/>
                     <div className="form-group">
                         <div className="form-check form-check-inline">
                             <input  className="form-check-input"
@@ -112,6 +115,7 @@ export default class CreateTodo extends Component {
                             <label className="form-check-label">High</label>
                         </div>
                     </div>
+                    <hr/>
                     <div className="form-group">
                         <input type="submit" value="Create Todo" className="btn btn-primary" />
                     </div>
